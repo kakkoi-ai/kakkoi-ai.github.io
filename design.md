@@ -1,4 +1,4 @@
-# 🧠 Design Ledger - Kakkoi-ai (v2.0)
+# 🧠 Design Ledger - Kakkoi-ai (v2.1)
 
 ## 🎯 Vision du Projet & Image de Marque
 
@@ -25,9 +25,9 @@ Le thème global est résolument clair, chaleureux et texturé.
 
 ### Fonds et Surfaces (Backgrounds)
 
-- **Fond Principal (Page)** : Latte / Warm Paper `rgb(238, 230, 224)` | `#EEE6E0`
-- **Fond de Section (Alternatif)** : Légèrement plus clair `rgb(245, 239, 234)` | `#F5EFEA`
-- **Surfaces Élevées (Cards, Modals)** : Warm Glass `rgb(250, 246, 242)` | `#FAF6F2`
+- **Fond Principal (Page)** : Blanc Cassé `rgb(250, 249, 246)` | `#FAF9F6`
+- **En-tête & Modales (Latte Clair)** : `rgb(245, 240, 235)` | `#F5F0EB`
+- **Surfaces Élevées (Cards)** : Warm Glass `rgb(250, 246, 242)` | `#FAF6F2` (avec transparences)
 
 ### Typographie (Encres)
 
@@ -38,7 +38,7 @@ Le thème global est résolument clair, chaleureux et texturé.
 
 Les couleurs d'accentuation sont utilisées de manière sémantique pour représenter les différents piliers de la personnalité du moteur Polymood™ (Modèle OCEAN) :
 
-- 🔵 **O (Ouverture)** & Accent Principal : Lofi Blue / Teal `rgb(91, 140, 154)` | `#5B8C9A`
+- 🔵 **O (Ouverture)** & Accent Principal : Muted Cloud Blue `rgb(78, 125, 139)` | `#4E7D8B`
 - 🔴 **C (Conscience)** & Break/Alert : Soft Red `rgb(230, 57, 70)` | `#E63946`
 - 🟢 **E (Extraversion)** : Muted Teal `rgb(131, 165, 152)` | `#83A598`
 - 🟡 **A (Agréabilité)** : Warm Sand `rgb(232, 184, 120)` | `#E8B878`
@@ -50,8 +50,13 @@ Les couleurs d'accentuation sont utilisées de manière sémantique pour représ
 
 - **Card-Glass** : Les cartes et interfaces superposées utilisent un effet de verre dépoli clair. Background translucide (`rgba(245, 239, 234, 0.45)`), fort flou d'arrière-plan (`backdrop-filter: blur(20px)`), bordure blanche subtile et légère ombre colorée.
 - **Custom Cursor** : Curseur natif masqué sur desktop. Remplacé par un point central hyper réactif qui inverse subtilement les couleurs (`mix-blend-difference`). Désactivé intelligemment sur les appareils tactiles (`pointer: coarse`).
-- **Background Glows** : Halos de lumière colorés flottant lentement en arrière-plan, utilisant les couleurs d'accentuation Lofi Blue et Soft Red pour donner une impression de "respiration" organique au site.
+- **Texture "Warm Paper"** : Grain analogique (Noise SVG) discret en mode multiply (`opacity: 0.035`), appliqué sur l'ensemble de l'interface pour simuler une feuille de papier continu. L'absence de fonds sur les sections permet au "Blanc Cassé" de s'exprimer pleinement.
 - **Animations d'Interface** : Effet "Jelly bounce" sur les titres via Framer Motion (élasticité fluide, `type: "spring"`).
+- **Scène 3D Interactive** : Intégration d'un canvas WebGL via Three.js avec trois avatars "fantômes" (Rouge, Violet, Vert). Ils suivent le curseur (Mouse Tracking) avec une interpolation fluide, flottent (respiration), clignent des yeux de manière procédurale et affichent des états émotionnels dynamiques (normal, suspicious, happy).
+- **Animations Multi-pages & Décors** :
+  - _Gradients Vivants_ (`/who`) : Fonds animés par flux de gradients subtils et croisés.
+  - _Grilles & Particules_ (`/news`, `Missions`) : Dérive de grilles infinies et points clignotants pour souligner la data.
+  - _Carrousels_ (`Partners`) : Défilement horizontal infini mis en pause au survol.
 - **Preloader** : Écran d'initialisation de "l'âme" avec dessin vectoriel du trait du logo en introduction.
 
 ---
@@ -61,6 +66,7 @@ Les couleurs d'accentuation sont utilisées de manière sémantique pour représ
 - **Framework** : React 18 + Vite
 - **Langage** : TypeScript (Strict)
 - **Styling** : Tailwind CSS + Variables CSS natives
+- **3D / WebGL** : Three.js (utilisé pour les avatars de la `CharacterScene`)
 - **Animations** : Framer Motion
 - **Icônes** : Lucide-React
 - **Architecture** : Modulaire (Composants atomiques, variables CSS sémantiques isolées)
@@ -71,6 +77,7 @@ Les couleurs d'accentuation sont utilisées de manière sémantique pour représ
 
 - **Accélération Matérielle (GPU)** : Utilisation stricte de `willChange: "transform"` sur les halos floutés (`blur`) et animations infinies pour décharger le processeur et garantir un défilement 60 FPS constant, même sur mobile.
 - **Accessibilité Inclusive** : Interface conforme aux standards avec balises ARIA complètes (`aria-live="polite"` pour les annonces du formulaire, `aria-hidden="true"` pour cacher les éléments purement décoratifs aux lecteurs d'écran, et `aria-expanded` pour le menu mobile).
+- **Chorégraphie d'Entrée** : Synchronisation fine du timing (`baseDelay` de 2.5s) entre l'estompement du Preloader et l'apparition progressive ("fly-in") des avatars 3D pour une fluidité d'accueil parfaite.
 - **Optimisation Mobile** : Viewport stabilisé avec `min-height: 100svh` pour éviter les sauts de navigation, et blocage natif du scroll lors de l'ouverture du menu mobile.
 
 ---
@@ -78,4 +85,4 @@ Les couleurs d'accentuation sont utilisées de manière sémantique pour représ
 ## 🚫 Contraintes de Sécurité & Contenu
 
 - **INTERNET** : Le projet doit tourner sans dépendances externes (pas d'appels CDN au runtime, polices chargées en local).
-- **CONTENU** : Le discours se concentre sur l'intelligence émotionnelle, le texte et le comportement. Aucune mention d'Unreal Engine, d'Unity, ou de moteurs 3D à ce stade.
+- **CONTENU** : Le discours se concentre sur l'intelligence émotionnelle, le texte et le comportement. Bien qu'une scène WebGL (Three.js) illustre désormais les avatars, toute mention publique de gros moteurs 3D (Unreal Engine, Unity) reste proscrite pour maintenir le focus "IA / Organique".

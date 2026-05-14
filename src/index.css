@@ -37,14 +37,14 @@
 }
 
 * {
-  font-family: 'Bolota', sans-serif !important;
+  font-family: 'Bolota', sans-serif;
 }
 
 /* Bolota Font - Loaded from local files */
 @font-face {
   font-family: 'Bolota';
   src: url('/fonts/BolotaVF.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -76,11 +76,10 @@ LOFI MORNING THEME (Default)
       Primitives (foundation)
       ====================== */
 
-  /* Backgrounds: airy, slightly blue-tinted */
-  --p-bg-page: 238 230 224;        /* Lighter Latte #EEE6E0 */
-  --p-bg-section: 245 239 234;     /* Slightly lighter */
-  --p-bg-section-alt: 238 230 224; /* Alt section */
-  --p-bg-break: 230 57 70;         /* Break band (Soft Red) */
+  /* Backgrounds: minimal, Blanc Cassé */
+  --p-bg-page: 250 249 246;        /* Blanc Cassé #FAF9F6 */
+  --p-bg-section: 245 240 235;     /* Latte Clair #F5F0EB */
+  --p-bg-section-alt: 250 249 246; /* Alt section */
 
   /* Surfaces: cards, modals, elevated panels */
   --p-surface-1: 250 246 242;      /* Lighter warm glass */
@@ -88,14 +87,14 @@ LOFI MORNING THEME (Default)
   --p-surface-3: 238 230 224;      /* Hover/pressed subtle surface */
 
   /* Ink (text) */
-  --p-ink-primary: 61 52 49;       /* Dark Espresso Brown #3D3431 */
+  --p-ink-primary: 45 45 45;       /* Warm Anthracite #2D2D2D */
   --p-ink-secondary: 94 82 78;     /* Secondary text */
   --p-ink-muted: 138 123 118;      /* Muted taupe text */
 
   /* Accents */
-  --p-accent: 91 140 154;          /* Lofi Blue / Teal #5B8C9A */
-  --p-accent-hover: 74 117 130;    /* Hover blue */
-  --p-accent-strong: 91 140 154;   /* Pressed/strong emphasis */
+  --p-accent: 78 125 139;          /* Muted Cloud Blue #4E7D8B */
+  --p-accent-hover: 70 112 125;    /* Soft Hover blue */
+  --p-accent-strong: 78 125 139;   /* Pressed/strong emphasis */
   --p-accent-2: 230 57 70;         /* Soft Red Accent #E63946 */
   --p-accent-warm: 232 184 120;    /* Warm Sand #E8B878 */
 
@@ -117,7 +116,6 @@ LOFI MORNING THEME (Default)
   --bg-page: var(--p-bg-page);
   --bg-section: var(--p-bg-section);
   --bg-section-alt: var(--p-bg-section-alt);
-  --bg-break: var(--p-bg-break);
 
   /* Surfaces */
   --surface-1: var(--p-surface-1);
@@ -154,7 +152,6 @@ LOFI MORNING THEME (Default)
 
   /* Text on colored backgrounds (contrast) */
   --on-accent: 255 255 255;       /* Text on accent / danger / primary CTA */
-  --on-break: 15 23 42;           /* Text on break band (light blue in colorful) */
 
 
   /* ==========================
@@ -165,7 +162,6 @@ LOFI MORNING THEME (Default)
   --color-bg-alt: var(--bg-section-alt);
   --color-bg-soft-accent: var(--surface-1);
   --color-bg-pre: var(--surface-pre);
-  --color-bg-break: var(--bg-break);
 
   --color-accent-primary: var(--accent);
   --color-accent-secondary: var(--accent-2); /* premium indigo */
@@ -307,27 +303,27 @@ LOFI MORNING THEME (Default)
   }
 
   h1 {
-    @apply text-5xl md:text-7xl font-black tracking-tight text-title-primary mb-6;
-    text-shadow: 0 8px 24px rgba(91, 140, 154, 0.15);
+    @apply text-5xl md:text-7xl font-[600] tracking-[-0.02em] text-title-primary mb-6;
+    text-shadow: 0 8px 24px rgba(78, 125, 139, 0.15);
     -webkit-text-stroke: 0.5px currentcolor;
   }
 
   h2 {
-    @apply text-4xl md:text-6xl font-black tracking-tight text-title-primary mb-4;
-    text-shadow: 0 6px 18px rgba(91, 140, 154, 0.12);
+    @apply text-4xl md:text-6xl font-[600] tracking-[-0.02em] text-title-primary mb-4;
+    text-shadow: 0 6px 18px rgba(78, 125, 139, 0.12);
     -webkit-text-stroke: 0.5px currentcolor;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl font-black tracking-tighter text-title-primary mb-3;
+    @apply text-2xl md:text-3xl font-[550] tracking-tight text-title-primary mb-3;
   }
 
   h4 {
-    @apply text-xl md:text-2xl font-medium text-title-primary mb-2;
+    @apply text-xl md:text-2xl font-[500] text-title-primary mb-2;
   }
 
   p {
-    @apply text-base leading-7 text-muted;
+    @apply text-base font-[350] leading-relaxed text-muted;
   }
 
   a {
@@ -341,13 +337,6 @@ LOFI MORNING THEME (Default)
   *:focus-visible {
     outline: none;
     box-shadow: 0 0 0 2px rgb(var(--bg-page)), 0 0 0 4px rgb(var(--ring));
-  }
-
-  /* Masquer le curseur natif sur Desktop pour laisser briller le Custom Cursor */
-  @media (pointer: fine) {
-    body, a, button, .card-glass {
-      cursor: none !important;
-    }
   }
 }
 
@@ -587,12 +576,26 @@ html[data-theme="colorful"] *:focus-visible {
     }
   }
 
+  .logo-img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .loader-logo {
+    width: clamp(180px, 30vw, 300px);
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
   /* ─── Components: buttons ─── */
   .ui-btn-primary,
   .btn-fashion {
-    @apply inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-bold;
+    @apply inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-[600] transition-all duration-300 ease-out cursor-pointer;
     @apply bg-accent-strong text-white;
-    @apply shadow-[0_8px_20px_rgba(91,140,154,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent;
+    @apply shadow-[0_8px_20px_rgba(78,125,139,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent;
   }
 
   .ui-btn-secondary,
@@ -674,7 +677,7 @@ html[data-theme="colorful"] *:focus-visible {
     border: 1px solid rgba(255, 255, 255, 0.5);
     background-color: rgba(245, 239, 234, 0.45);
     backdrop-filter: blur(20px);
-    box-shadow: 0 12px 40px rgba(91, 140, 154, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 0 12px 40px rgba(78, 125, 139, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
   }
   /* Section-level glass: same effect for large section containers on busy backgrounds. */
   .section-glass {
@@ -744,7 +747,7 @@ html[data-theme="colorful"] *:focus-visible {
 
   /* ===== Semantic UI utilities ===== */
   .page {
-    background-color: rgb(var(--bg-page));
+    background-color: transparent;
     min-height: 100vh;
   }
   .container {
@@ -1236,7 +1239,8 @@ html[data-theme="colorful"] *:focus-visible {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
     pointer-events: none;
   }
 
