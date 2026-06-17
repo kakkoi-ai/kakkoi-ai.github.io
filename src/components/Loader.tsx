@@ -6,6 +6,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { assetUrl } from '../utils/assetUrl';
 
 const Loader: React.FC<{ onFinished: () => void }> = ({ onFinished }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -37,7 +38,7 @@ const Loader: React.FC<{ onFinished: () => void }> = ({ onFinished }) => {
             className="relative flex flex-col items-center"
           >
             <motion.img 
-              src="/vertical6.png" 
+              src={assetUrl('vertical6.png')} 
               alt="kakkoï AI" 
               className="loader-logo z-10"
               animate={{ scale: [1, 1.04, 1], opacity: [0.8, 1, 0.8] }}

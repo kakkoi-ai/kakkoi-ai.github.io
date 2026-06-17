@@ -8,6 +8,7 @@ import WaitlistForm from './components/WaitlistForm';
 import Loader from './components/Loader';
 import CharacterScene from './components/CharacterScene';
 import LegalModal from './components/LegalModal';
+import { assetUrl } from './utils/assetUrl';
 
 // Palette Lofi Morning
 const OCEAN_COLORS = [
@@ -122,7 +123,7 @@ function App() {
                 }}
                 className={`relative cursor-pointer hover:scale-105 transition-all duration-300 flex items-center z-[110] ${isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
               >
-                <img src="/vertical6.png" alt="kakkoï AI" className="logo-img" />
+                <img src={assetUrl('vertical6.png')} alt="kakkoï AI" className="logo-img" />
               </a>
               
               <nav className="hidden md:flex items-center gap-16 lg:gap-24">
